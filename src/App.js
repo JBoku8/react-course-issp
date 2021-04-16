@@ -1,4 +1,5 @@
-import Greeting from "./Greeting";
+import Home from "./pages/home";
+import Users from "./pages/users";
 
 import "./App.css";
 
@@ -8,9 +9,8 @@ import "./App.css";
 function App() {
   return (
     <div className="container">
-      <Greeting text="Introduction" />
-      <Greeting text="ReactJS Rocks." />
-      <h2>Hello React.JS</h2>
+      <Home />
+      <Users />
     </div>
   );
 }
