@@ -1,7 +1,7 @@
 import ListItem from "./ListItem";
 import { usersList } from "../../data";
 
-function List(props) {
+export function List(props) {
   const demo = () => {
     return [3, 5];
   };
@@ -16,5 +16,3 @@ function List(props) {
     </div>
   );
 }
-
-export default List;
