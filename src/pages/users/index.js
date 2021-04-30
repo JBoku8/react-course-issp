@@ -1,5 +1,5 @@
 import { useState } from "react";
-import List from "../../components/list";
+import { List } from "../../components/list";
 import Spinner from "../../components/spinner";
 import { Button } from "../../components/ui";
 
