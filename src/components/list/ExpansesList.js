@@ -1,6 +1,11 @@
-import { ExpansesListItem } from "./ExpansesListItem";
+import { useContext } from 'react';
 
-export const ExpansesList = ({ data }) => {
+import { ExpansesListItem } from './ExpansesListItem';
+import { expansesContext } from '../../contexts/expansesContext';
+
+export const ExpansesList = () => {
+  const { expansesData: data } = useContext(expansesContext);
+
   return (
     <ol className="list-group list-group-numbered">
       {data.map((item) => {
