@@ -20,7 +20,7 @@ export const expansesList = [
     id: uuidv4(),
   },
   {
-    title: 'შევიძინე ბოსტბნეული',
+    title: 'შევიძინე ბოსტნეული',
     amount: 130,
     date: new Date().toDateString(),
     id: uuidv4(),
