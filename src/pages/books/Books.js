@@ -20,7 +20,7 @@ function Books() {
           {showForm ? 'Hide' : 'Show'} Form
         </button>
 
-        {showForm && <AddBookForm />}
+        {showForm && <AddBookForm showForm={setShowForm} />}
       </div>
 
       <div className="row px-3">

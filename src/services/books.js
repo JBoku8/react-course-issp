@@ -1,4 +1,4 @@
-const booksUrl = 'https://fakerapi.it/api/v1/books?_quantity=3';
+import { booksUrl } from './service.helpers';
 
 export const getBooks = async () => {
   try {

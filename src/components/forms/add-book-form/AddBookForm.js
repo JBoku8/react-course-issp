@@ -1,15 +1,17 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 import { booksContext } from '../../../providers/BookProvider';
 
-function AddBookForm() {
+function AddBookForm({ showForm }) {
   const { onBookAdd } = useContext(booksContext);
 
   const {
     handleSubmit,
     formState: { errors },
     register,
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -21,6 +23,7 @@ function AddBookForm() {
     };
 
     onBookAdd(newBook);
+    reset();
   };
 
   return (
@@ -66,8 +69,19 @@ function AddBookForm() {
       <button className="btn btn-success" type="submit">
         Submit
       </button>
+
+      <button
+        className="btn btn-warning ms-1"
+        type="button"
+        onClick={() => showForm(false)}>
+        Close
+      </button>
     </form>
   );
 }
+
+AddBookForm.propTypes = {
+  showForm: PropTypes.func.isRequired,
+};
 
 export default AddBookForm;
