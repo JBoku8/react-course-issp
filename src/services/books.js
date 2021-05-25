@@ -1,10 +1,13 @@
-import { booksUrl } from './service.helpers';
+import axios from 'axios';
 
-export const getBooks = async () => {
+import { API_URL } from './service.helpers';
+
+axios.defaults.baseURL = API_URL;
+
+export const getBooks = async (_quantity = 3) => {
   try {
-    const response = await fetch(booksUrl);
-    const result = await response.json();
-    return result.data;
+    const response = await axios.get(`/books?_quantity=${_quantity}`);
+    return response.data.data;
   } catch (err) {
     console.trace(err);
     return [];

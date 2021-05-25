@@ -5,15 +5,20 @@ import { EXPANSES_PATH } from '../../../paths';
 import { storeValue } from '../../../utils';
 
 import { login } from '../../../services';
+import { useContext } from 'react';
+import { authContext } from '../../../providers/AuthProvider';
+import { AUTH_TOKEN } from '../../../utils/constants';
 
 export const SignIn = () => {
   const history = useHistory();
+  const { signIn } = useContext(authContext);
   const { handleSubmit, register, reset } = useForm();
 
   const onSubmit = async (data) => {
     const loggedIn = await login(data);
     if (loggedIn) {
-      storeValue('auth.token', loggedIn.token);
+      storeValue(AUTH_TOKEN, loggedIn.token);
+      signIn(loggedIn);
       history.replace(EXPANSES_PATH);
     }
     reset();

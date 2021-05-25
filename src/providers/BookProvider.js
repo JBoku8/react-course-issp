@@ -8,10 +8,11 @@ booksContext.displayName = 'BooksContext';
 function BookProvider({ children }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [amount, setAmount] = useState();
 
-  const loadBooks = async () => {
+  const loadBooks = async (count) => {
     setLoading(true);
-    const result = await getBooks();
+    const result = await getBooks(count);
     setBooks(result);
     setLoading(false);
   };
@@ -21,11 +22,12 @@ function BookProvider({ children }) {
   };
 
   useEffect(() => {
-    loadBooks();
-  }, []);
+    loadBooks(amount);
+  }, [amount]);
 
   return (
-    <booksContext.Provider value={{ books, setBooks, loading, onBookAdd }}>
+    <booksContext.Provider
+      value={{ books, setBooks, loading, onBookAdd, setAmount }}>
       {children}
     </booksContext.Provider>
   );

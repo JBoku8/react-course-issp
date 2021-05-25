@@ -6,9 +6,6 @@ import CounterClass from './pages/counter-class';
 import Books from './pages/books';
 import Expanses from './pages/expanses';
 import AuthPage from './pages/auth';
-import Theme from './components/theme/theme';
-import BookProvider from './providers/BookProvider';
-import ExpanseProvider from './providers/ExpanseProvider';
 import * as route from './paths';
 
 export const Routes = () => {
@@ -32,17 +29,11 @@ export const Routes = () => {
         </Route>
 
         <Route path={route.EXPANSES_PATH}>
-          <Theme>
-            <ExpanseProvider>
-              <Expanses />
-            </ExpanseProvider>
-          </Theme>
+          <Expanses />
         </Route>
 
         <Route path={route.BOOKS_PATH}>
-          <BookProvider>
-            <Books />
-          </BookProvider>
+          <Books initialAmount={10} />
         </Route>
 
         <Route path={route.AUTH_PATH}>
