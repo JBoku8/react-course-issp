@@ -1,5 +1,6 @@
 import { loginUrl, registerUrl } from './service.helpers';
 import { removeValue } from '../utils/localStorage';
+import { AUTH_TOKEN } from '../utils/constants';
 
 export const login = async (credentials) => {
   try {
@@ -41,6 +42,6 @@ export const register = async (credentials) => {
 
 export const logOut = async () => {
   try {
-    removeValue('auth.token');
+    removeValue(AUTH_TOKEN);
   } catch (error) {}
 };

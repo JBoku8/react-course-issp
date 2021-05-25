@@ -1,15 +1,18 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router';
 import ExpansesForm from '../../components/forms/expanses-form';
 import { ExpansesList } from '../../components/list';
 import { logOut } from '../../services';
 import { USERS_PATH } from '../../paths';
+import { authContext } from '../../providers/AuthProvider';
 
 function Expanses() {
   const history = useHistory();
+  const { signOut } = useContext(authContext);
 
   const onLogOut = async () => {
     await logOut();
-
+    signOut();
     history.replace(USERS_PATH);
   };
 

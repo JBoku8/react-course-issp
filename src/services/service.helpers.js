@@ -1,5 +1,5 @@
-const AUTH_URL = process.env.REACT_APP_AUTH_URL;
-const API_URL = process.env.REACT_APP_AUTH_URL;
+export const AUTH_URL = process.env.REACT_APP_AUTH_URL;
+export const API_URL = process.env.REACT_APP_API_URL;
 
 export const booksUrl = `${API_URL}/books?_quantity=3`;
 

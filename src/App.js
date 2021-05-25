@@ -1,18 +1,21 @@
 import { Navigation } from './components/navigation';
 import { Routes } from './Routes';
+import AuthProviderComponent from './providers/AuthProvider';
 
 import './App.css';
 
-// class = className
-// for = htmlFor
-
 function App() {
   return (
-    <div className="container">
-      <Navigation />
-      <hr />
-      <Routes />
-    </div>
+    <AuthProviderComponent>
+      <div className="container">
+        <section className="row shadow-sm p-3 bg-light mt-1">
+          <Navigation />
+        </section>
+        <section className="row shadow-sm p-3 mt-4 bg-light">
+          <Routes />
+        </section>
+      </div>
+    </AuthProviderComponent>
   );
 }
 
