@@ -44,12 +44,16 @@ export function Navigation() {
         Users
       </NavLink>
 
-      <NavLink className="nav-link" to={routes.COUNTER_BOOKS_PATH}>
+      {/* <NavLink className="nav-link" to={routes.COUNTER_BOOKS_PATH}>
         Counter Hooks
       </NavLink>
 
       <NavLink className="nav-link" to={routes.COUNTER_CLASS_PATH}>
         Counter Class
+      </NavLink> */}
+
+      <NavLink className="nav-link" to={routes.PRODUCTS_PATH}>
+        Products
       </NavLink>
       {renderAuthLinks()}
       {renderUserLinks()}
