@@ -1,0 +1,9 @@
+.book-item {
+  max-height: 400px;
+}
+
+.title {
+  color: red !important;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
