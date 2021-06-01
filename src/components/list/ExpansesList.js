@@ -1,10 +1,8 @@
-import { useContext } from 'react';
-
 import { ExpansesListItem } from './ExpansesListItem';
-import { expansesContext } from '../../contexts/expansesContext';
+import { useExpanses } from '../../providers/ExpanseProvider';
 
 export const ExpansesList = () => {
-  const { expansesData: data } = useContext(expansesContext);
+  const data = useExpanses();
 
   return (
     <ol className="list-group list-group-numbered">

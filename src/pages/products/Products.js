@@ -1,4 +1,5 @@
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import { getProducts } from '../../services';
 import { debounce } from '../../utils/helpers';
 
@@ -42,17 +43,39 @@ const productsReducer = (state, action) => {
 
 function Products() {
   const [state, dispatch] = useReducer(productsReducer, initialState);
+  const [, setProductsStorage] = useLocalStorage('app:products', []);
 
-  const loadProducts = async () => {
+  const loadProducts = useCallback(async () => {
     const productsList = await getProducts(12);
+    setProductsStorage(productsList);
     dispatch({
       type: SET_PRODUCTS,
       payload: productsList,
     });
-  };
+  }, [setProductsStorage]);
+
   useEffect(() => {
     loadProducts();
   }, []);
+
+  useEffect(() => {
+    setProductsStorage(state.products);
+  }, [state.products, setProductsStorage]);
+
+  const onSearch = debounce(({ target }) => {
+    if (target.value.length > 3) {
+      dispatch({
+        type: SET_FILTER,
+        payload: target.value,
+      });
+    } else {
+      if (state.filter) {
+        dispatch({
+          type: CLEAR_FILTER,
+        });
+      }
+    }
+  });
 
   const renderProducts = () => {
     return (
@@ -85,21 +108,6 @@ function Products() {
       </div>
     );
   };
-
-  const onSearch = debounce(({ target }) => {
-    if (target.value.length > 3) {
-      dispatch({
-        type: SET_FILTER,
-        payload: target.value,
-      });
-    } else {
-      if (state.filter) {
-        dispatch({
-          type: CLEAR_FILTER,
-        });
-      }
-    }
-  });
 
   return (
     <div className="row m-0">

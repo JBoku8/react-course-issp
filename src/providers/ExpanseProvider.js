@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { expansesContext } from '../contexts/expansesContext';
 import { expansesList } from '../data';
@@ -51,5 +51,13 @@ function ExpanseProvider({ children }) {
     </expansesContext.Provider>
   );
 }
+
+export const useExpanses = () => {
+  const { expansesData } = useContext(expansesContext);
+  if (!expansesData) {
+    throw Error('invalid expanse context');
+  }
+  return expansesData;
+};
 
 export default ExpanseProvider;
