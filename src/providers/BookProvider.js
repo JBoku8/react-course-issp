@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { getBooks } from '../services/books';
 
 export const booksContext = createContext(null);
@@ -32,5 +32,13 @@ function BookProvider({ children }) {
     </booksContext.Provider>
   );
 }
+
+export const useBooks = () => {
+  const { books } = useContext(booksContext);
+  if (!books) {
+    throw Error('invalid books context');
+  }
+  return books;
+};
 
 export default BookProvider;

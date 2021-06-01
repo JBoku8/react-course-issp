@@ -2,12 +2,13 @@ import { useContext, useEffect, useState } from 'react';
 import { BookCard } from '../../components/cards/BookCard';
 import AddBookForm from '../../components/forms/add-book-form/AddBookForm';
 import Spinner from '../../components/spinner/Spinner';
-import { booksContext } from '../../providers/BookProvider';
+import { booksContext, useBooks } from '../../providers/BookProvider';
 
 import css from './books.module.css';
 
 function Books({ initialAmount }) {
-  const { books, loading, setAmount } = useContext(booksContext);
+  const { loading, setAmount } = useContext(booksContext);
+  const books = useBooks();
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
