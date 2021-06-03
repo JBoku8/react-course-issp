@@ -1,17 +1,17 @@
-import React, { Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Home from './pages/home';
+import React, { Suspense } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Home from './pages/home'
 
-import Spinner from './components/spinner';
-import * as route from './paths';
+import Spinner from './components/spinner'
+import * as route from './paths'
 
-const Users = React.lazy(() => import('./pages/users'));
-const Books = React.lazy(() => import('./pages/books'));
-const Expanses = React.lazy(() => import('./pages/expanses'));
-const AuthPage = React.lazy(() => import('./pages/auth'));
-const Products = React.lazy(() => import('./pages/products'));
-const CounterHooks = React.lazy(() => import('./pages/counter-hooks'));
-const CounterClass = React.lazy(() => import('./pages/counter-class'));
+const Users = React.lazy(() => import('./pages/users'))
+const Books = React.lazy(() => import('./pages/books'))
+const Expanses = React.lazy(() => import('./pages/expanses'))
+const AuthPage = React.lazy(() => import('./pages/auth'))
+const Products = React.lazy(() => import('./pages/products'))
+const CounterHooks = React.lazy(() => import('./pages/counter-hooks'))
+const CounterClass = React.lazy(() => import('./pages/counter-class'))
 
 export const Routes = () => {
   return (
@@ -54,5 +54,5 @@ export const Routes = () => {
         </Switch>
       </Suspense>
     </>
-  );
-};
+  )
+}

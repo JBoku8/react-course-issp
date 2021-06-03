@@ -1,13 +1,24 @@
-import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import { authContext } from '../../providers/AuthProvider';
-import * as routes from '../../paths';
+import { useDispatch, useSelector } from 'react-redux'
+import { NavLink, useHistory } from 'react-router-dom'
 
-export function Navigation() {
-  const { user } = useContext(authContext);
+import * as routes from '../../paths'
+import { authSelector } from '../../redux/selectors'
+import { setGuestUserAction } from '../../redux/actions'
+import { logOut } from '../../services/auth'
+
+export function Navigation () {
+  const history = useHistory()
+  const authorized = useSelector(authSelector)
+  const dispatch = useDispatch()
+
+  const onLogOut = async () => {
+    await logOut()
+    dispatch(setGuestUserAction())
+    history.replace(routes.HOME_PATH)
+  }
 
   const renderUserLinks = () => {
-    if (!user) return null;
+    if (!authorized) return null
 
     return (
       <>
@@ -18,12 +29,16 @@ export function Navigation() {
         <NavLink className="nav-link" to={routes.BOOKS_PATH}>
           Books
         </NavLink>
-      </>
-    );
-  };
 
-  const renderAuthLinks = () => {
-    if (user) return null;
+        <button className="btn btn-primary" onClick={onLogOut}>
+          Log Out
+        </button>
+      </>
+    )
+  }
+
+  const renderGuestLinks = () => {
+    if (authorized) return null
 
     return (
       <>
@@ -31,8 +46,8 @@ export function Navigation() {
           Auth
         </NavLink>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <nav className="nav nav-pills nav-fill">
@@ -55,8 +70,8 @@ export function Navigation() {
       <NavLink className="nav-link" to={routes.PRODUCTS_PATH}>
         Products
       </NavLink>
-      {renderAuthLinks()}
+      {renderGuestLinks()}
       {renderUserLinks()}
     </nav>
-  );
+  )
 }

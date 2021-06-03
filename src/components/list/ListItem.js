@@ -5,7 +5,7 @@ const ListItem = ({ user }) => {
         {user.firstname} {user.lastname}
       </h3>
     </div>
-  );
-};
+  )
+}
 
-export default ListItem;
+export default ListItem

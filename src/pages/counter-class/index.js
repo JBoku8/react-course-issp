@@ -1,1 +1,1 @@
-export { default } from "./CounterClass";
+export { default } from './CounterClass'

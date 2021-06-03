@@ -1,81 +1,81 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class CounterClass extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       count: null,
-      bgColor: "bg-light",
-    };
+      bgColor: 'bg-light'
+    }
 
     // this.onIncrement = this.onIncrement.bind(this);
     // this.onDecrement = this.onDecrement.bind(this);
     // this.onReset = this.onReset.bind(this);
   }
 
-  componentDidMount() {
-    const { initialValue } = this.props;
+  componentDidMount () {
+    const { initialValue } = this.props
     //   ajax call
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: initialValue,
-      };
-    });
+        count: initialValue
+      }
+    })
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    const { count } = this.state;
+  componentDidUpdate (prevProps, prevState, snapshot) {
+    const { count } = this.state
     if (count !== prevState.count) {
-      let bgColor = "bg-light";
+      let bgColor = 'bg-light'
 
       if (count !== 0 && count % 2 === 0) {
-        bgColor = "bg-info";
+        bgColor = 'bg-info'
       } else if (count % 2 === 1) {
-        bgColor = "bg-warning";
+        bgColor = 'bg-warning'
       }
 
       this.setState((prevState) => {
         return {
           ...prevState,
-          bgColor,
-        };
-      });
+          bgColor
+        }
+      })
     }
   }
 
-  onIncrement(value) {
+  onIncrement (value) {
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: prevState.count + value,
-      };
-    });
+        count: prevState.count + value
+      }
+    })
   }
 
-  onDecrement(value) {
+  onDecrement (value) {
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: prevState.count - value,
-      };
-    });
+        count: prevState.count - value
+      }
+    })
   }
 
-  onReset() {
-    const { initialValue } = this.props;
+  onReset () {
+    const { initialValue } = this.props
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: initialValue,
-      };
-    });
+        count: initialValue
+      }
+    })
   }
 
-  render() {
-    const { count, bgColor } = this.state;
+  render () {
+    const { count, bgColor } = this.state
 
     return (
       <div className={`row mt-5 p-5 ${bgColor}`}>
@@ -114,12 +114,12 @@ class CounterClass extends React.Component {
           </button>
         </div>
       </div>
-    );
+    )
   }
 }
 
 CounterClass.propTypes = {
-  initialValue: PropTypes.number.isRequired,
-};
+  initialValue: PropTypes.number.isRequired
+}
 
-export default CounterClass;
+export default CounterClass
