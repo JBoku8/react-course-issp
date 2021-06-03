@@ -1,33 +1,33 @@
-import { useContext, useEffect, useState } from 'react';
-import { BookCard } from '../../components/cards/BookCard';
-import AddBookForm from '../../components/forms/add-book-form/AddBookForm';
-import Spinner from '../../components/spinner/Spinner';
-import { booksContext, useBooks } from '../../providers/BookProvider';
+import { useContext, useEffect, useState } from 'react'
+import { BookCard } from '../../components/cards/BookCard'
+import AddBookForm from '../../components/forms/add-book-form/AddBookForm'
+import Spinner from '../../components/spinner/Spinner'
+import { booksContext, useBooks } from '../../providers/BookProvider'
 
-import css from './books.module.css';
+import css from './books.module.css'
 
-function Books({ initialAmount }) {
-  const { loading, setAmount } = useContext(booksContext);
-  const books = useBooks();
-  const [showForm, setShowForm] = useState(false);
+function Books ({ initialAmount }) {
+  const { loading, setAmount } = useContext(booksContext)
+  const books = useBooks()
+  const [showForm, setShowForm] = useState(false)
 
   useEffect(() => {
-    setAmount(initialAmount);
-  }, [initialAmount, setAmount]);
+    setAmount(initialAmount)
+  }, [initialAmount, setAmount])
 
   const renderBooks = () => {
     if (loading) {
-      return <Spinner />;
+      return <Spinner />
     }
 
     return (
       <div className="row px-3">
         {books.map((item) => {
-          return <BookCard item={item} key={item.isbn} />;
+          return <BookCard item={item} key={item.isbn} />
         })}
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <div className="row">
@@ -53,7 +53,7 @@ function Books({ initialAmount }) {
 
       {renderBooks()}
     </div>
-  );
+  )
 }
 
-export default Books;
+export default Books

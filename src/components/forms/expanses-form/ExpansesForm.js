@@ -1,37 +1,37 @@
-import { useEffect, useState, useContext } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useEffect, useState, useContext } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import { ExpansesFilter } from '../../filters/ExpansesFilter';
-import { expansesContext } from '../../../contexts/expansesContext';
+import { ExpansesFilter } from '../../filters/ExpansesFilter'
+import { expansesContext } from '../../../contexts/expansesContext'
 
-function ExpansesForm() {
-  const { onExpanseSubmit: onSubmit, selectedExpanse } = useContext(expansesContext);
+function ExpansesForm () {
+  const { onExpanseSubmit: onSubmit, selectedExpanse } = useContext(expansesContext)
 
-  const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState('');
+  const [title, setTitle] = useState('')
+  const [amount, setAmount] = useState(0)
+  const [date, setDate] = useState('')
 
   useEffect(() => {
     if (selectedExpanse) {
-      setTitle(selectedExpanse.title);
-      setAmount(selectedExpanse.amount);
-      setDate(new Date(selectedExpanse.date).toDateString());
+      setTitle(selectedExpanse.title)
+      setAmount(selectedExpanse.amount)
+      setDate(new Date(selectedExpanse.date).toDateString())
     }
-  }, [selectedExpanse]);
+  }, [selectedExpanse])
 
   const onSubmitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     onSubmit({
       title,
       amount,
       date,
-      id: uuidv4(),
-    });
+      id: uuidv4()
+    })
 
-    setTitle('');
-    setAmount(0);
-    setDate('');
-  };
+    setTitle('')
+    setAmount(0)
+    setDate('')
+  }
 
   return (
     <>
@@ -47,7 +47,7 @@ function ExpansesForm() {
             className="form-control"
             id="title"
             onChange={({ target }) => {
-              setTitle(target.value);
+              setTitle(target.value)
             }}
             value={title}
             required
@@ -63,7 +63,7 @@ function ExpansesForm() {
             id="amount"
             value={amount}
             onChange={({ target }) => {
-              setAmount(target.value);
+              setAmount(target.value)
             }}
             required
           />
@@ -78,7 +78,7 @@ function ExpansesForm() {
             id="date"
             value={date}
             onChange={({ target }) => {
-              setDate(target.value);
+              setDate(target.value)
             }}
             required
           />
@@ -91,7 +91,7 @@ function ExpansesForm() {
       </form>
       <ExpansesFilter />
     </>
-  );
+  )
 }
 
-export default ExpansesForm;
+export default ExpansesForm

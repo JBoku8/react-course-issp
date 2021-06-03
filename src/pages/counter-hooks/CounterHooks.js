@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
-function CounterHooks({ initialValue }) {
-  const [count, setCount] = useState(initialValue);
-  const [bgColor, setBgColor] = useState(null);
+function CounterHooks ({ initialValue }) {
+  const [count, setCount] = useState(initialValue)
+  const [bgColor, setBgColor] = useState(null)
 
   //   კომპონენტის გადახატვისას
   //   useEffect(() => {
@@ -17,29 +17,29 @@ function CounterHooks({ initialValue }) {
   //   }, []);
 
   useEffect(() => {
-    console.log("შემეცვალა count ", count);
+    console.log('შემეცვალა count ', count)
     if (count === 0) {
-      setBgColor("bg-light");
+      setBgColor('bg-light')
     } else if (count % 2 === 0) {
-      setBgColor("bg-info");
+      setBgColor('bg-info')
     } else {
-      setBgColor("bg-warning");
+      setBgColor('bg-warning')
     }
-  }, [count]);
+  }, [count])
 
   useEffect(() => {
-    console.log("BG COLOR UPDATE");
-  }, [bgColor]);
+    console.log('BG COLOR UPDATE')
+  }, [bgColor])
 
   const onIncrement = (value) => {
-    setCount((prevState) => prevState + value);
-  };
+    setCount((prevState) => prevState + value)
+  }
   const onDecrement = (value) => {
-    setCount((prevState) => prevState - value);
-  };
+    setCount((prevState) => prevState - value)
+  }
   const onReset = () => {
-    setCount(initialValue);
-  };
+    setCount(initialValue)
+  }
 
   return (
     <div className={`row ${bgColor} mt-5 p-5`}>
@@ -74,11 +74,11 @@ function CounterHooks({ initialValue }) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
 CounterHooks.propTypes = {
-  initialValue: PropTypes.number.isRequired,
-};
+  initialValue: PropTypes.number.isRequired
+}
 
-export default CounterHooks;
+export default CounterHooks

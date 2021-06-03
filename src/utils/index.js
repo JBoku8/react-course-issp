@@ -1,2 +1,2 @@
-export * from './filter';
-export * from './localStorage';
+export * from './filter'
+export * from './localStorage'

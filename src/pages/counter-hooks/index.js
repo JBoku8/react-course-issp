@@ -1,1 +1,1 @@
-export { default } from "./CounterHooks";
+export { default } from './CounterHooks'

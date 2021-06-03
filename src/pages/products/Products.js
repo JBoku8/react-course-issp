@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useReducer } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { getProducts } from '../../services';
-import { debounce } from '../../utils/helpers';
+import { useCallback, useEffect, useReducer } from 'react'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { getProducts } from '../../services'
+import { debounce } from '../../utils/helpers'
 
-const SET_PRODUCTS = 'SET_PRODUCTS';
-const SET_FILTER = 'SET_FILTER';
-const CLEAR_FILTER = 'CLEAR_FILTER';
+const SET_PRODUCTS = 'SET_PRODUCTS'
+const SET_FILTER = 'SET_FILTER'
+const CLEAR_FILTER = 'CLEAR_FILTER'
 
 const initialState = {
   products: [],
   oldProducts: [],
-  filters: null,
-};
+  filters: null
+}
 
 const productsReducer = (state, action) => {
   switch (action.type) {
@@ -19,63 +19,63 @@ const productsReducer = (state, action) => {
       return {
         ...state,
         products: action.payload,
-        oldProducts: [...action.payload],
-      };
+        oldProducts: [...action.payload]
+      }
     case SET_FILTER:
       const data = state.products.filter((item) =>
         item.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
+      )
       return {
         ...state,
         filter: action.payload,
-        products: data,
-      };
+        products: data
+      }
     case CLEAR_FILTER:
       return {
         ...state,
         filter: null,
-        products: [...state.oldProducts],
-      };
+        products: [...state.oldProducts]
+      }
     default:
-      throw new Error('');
+      throw new Error('')
   }
-};
+}
 
-function Products() {
-  const [state, dispatch] = useReducer(productsReducer, initialState);
-  const [, setProductsStorage] = useLocalStorage('app:products', []);
+function Products () {
+  const [state, dispatch] = useReducer(productsReducer, initialState)
+  const [, setProductsStorage] = useLocalStorage('app:products', [])
 
   const loadProducts = useCallback(async () => {
-    const productsList = await getProducts(12);
-    setProductsStorage(productsList);
+    const productsList = await getProducts(12)
+    setProductsStorage(productsList)
     dispatch({
       type: SET_PRODUCTS,
-      payload: productsList,
-    });
-  }, [setProductsStorage]);
+      payload: productsList
+    })
+  }, [setProductsStorage])
 
   useEffect(() => {
-    loadProducts();
-  }, []);
+    loadProducts()
+  }, [])
 
   useEffect(() => {
-    setProductsStorage(state.products);
-  }, [state.products, setProductsStorage]);
+    setProductsStorage(state.products)
+  }, [state.products, setProductsStorage])
 
   const onSearch = debounce(({ target }) => {
     if (target.value.length > 3) {
       dispatch({
         type: SET_FILTER,
-        payload: target.value,
-      });
+        payload: target.value
+      })
     } else {
       if (state.filter) {
         dispatch({
-          type: CLEAR_FILTER,
-        });
+          type: CLEAR_FILTER
+        })
       }
     }
-  });
+  })
 
   const renderProducts = () => {
     return (
@@ -98,16 +98,16 @@ function Products() {
                       <span className="badge bg-primary" key={`${index}-${tag}`}>
                         {tag}
                       </span>
-                    );
+                    )
                   })}
                 </p>
               </div>
             </div>
-          );
+          )
         })}
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <div className="row m-0">
@@ -126,7 +126,7 @@ function Products() {
       </div>
       <div className="col-12">{renderProducts()}</div>
     </div>
-  );
+  )
 }
 
-export default Products;
+export default Products

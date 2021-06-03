@@ -1,30 +1,30 @@
-import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
-import { v4 as uuid } from 'uuid';
-import { booksContext } from '../../../providers/BookProvider';
+import { useContext } from 'react'
+import { useForm } from 'react-hook-form'
+import PropTypes from 'prop-types'
+import { v4 as uuid } from 'uuid'
+import { booksContext } from '../../../providers/BookProvider'
 
-function AddBookForm({ showForm }) {
-  const { onBookAdd } = useContext(booksContext);
+function AddBookForm ({ showForm }) {
+  const { onBookAdd } = useContext(booksContext)
 
   const {
     handleSubmit,
     formState: { errors },
     register,
-    reset,
-  } = useForm();
+    reset
+  } = useForm()
 
   const onSubmit = (data) => {
     const newBook = {
       ...data,
       isbn: uuid(),
       image:
-        'https://i.pinimg.com/originals/76/00/ba/7600ba9d3305b21fc543a0e4599dd04d.gif',
-    };
+        'https://i.pinimg.com/originals/76/00/ba/7600ba9d3305b21fc543a0e4599dd04d.gif'
+    }
 
-    onBookAdd(newBook);
-    reset();
-  };
+    onBookAdd(newBook)
+    reset()
+  }
 
   return (
     <form className="form mt-2" onSubmit={handleSubmit(onSubmit)}>
@@ -37,7 +37,7 @@ function AddBookForm({ showForm }) {
           className="form-control"
           id="title"
           {...register('title', {
-            required: true,
+            required: true
           })}
         />
         {errors.title && (
@@ -56,7 +56,7 @@ function AddBookForm({ showForm }) {
           className="form-control"
           id="description"
           {...register('description', {
-            required: true,
+            required: true
           })}
         />
         {errors.description && (
@@ -77,11 +77,11 @@ function AddBookForm({ showForm }) {
         Close
       </button>
     </form>
-  );
+  )
 }
 
 AddBookForm.propTypes = {
-  showForm: PropTypes.func.isRequired,
-};
+  showForm: PropTypes.func.isRequired
+}
 
-export default AddBookForm;
+export default AddBookForm

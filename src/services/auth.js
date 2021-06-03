@@ -1,6 +1,6 @@
-import { loginUrl, registerUrl } from './service.helpers';
-import { removeValue } from '../utils/localStorage';
-import { AUTH_TOKEN } from '../utils/constants';
+import { loginUrl, registerUrl } from './service.helpers'
+import { removeValue } from '../utils/localStorage'
+import { AUTH_TOKEN } from '../utils/constants'
 
 export const login = async (credentials) => {
   try {
@@ -8,18 +8,18 @@ export const login = async (credentials) => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(credentials),
-    });
-    return await response.json();
+      body: JSON.stringify(credentials)
+    })
+    return await response.json()
   } catch (error) {
-    console.group('LOGIN');
-    console.error('[login] error');
-    console.trace(error);
-    console.groupEnd('LOGIN');
+    console.group('LOGIN')
+    console.error('[login] error')
+    console.trace(error)
+    console.groupEnd('LOGIN')
   }
-};
+}
 
 export const register = async (credentials) => {
   try {
@@ -27,21 +27,21 @@ export const register = async (credentials) => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(credentials),
-    });
-    return await response.json();
+      body: JSON.stringify(credentials)
+    })
+    return await response.json()
   } catch (error) {
-    console.group('Register');
-    console.error('[Register] error');
-    console.trace(error);
-    console.groupEnd('Register');
+    console.group('Register')
+    console.error('[Register] error')
+    console.trace(error)
+    console.groupEnd('Register')
   }
-};
+}
 
 export const logOut = async () => {
   try {
-    removeValue(AUTH_TOKEN);
+    removeValue(AUTH_TOKEN)
   } catch (error) {}
-};
+}

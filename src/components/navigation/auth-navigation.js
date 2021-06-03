@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { SIGN_UP_PATH, SIGN_IN_PATH } from '../../paths';
+import { Link } from 'react-router-dom'
+import { SIGN_UP_PATH, SIGN_IN_PATH } from '../../paths'
 
 export const AuthNavigation = () => {
   return (
@@ -15,5 +15,5 @@ export const AuthNavigation = () => {
         </Link>
       </li>
     </ul>
-  );
-};
+  )
+}

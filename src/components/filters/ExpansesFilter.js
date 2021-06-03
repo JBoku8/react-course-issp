@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { expansesContext } from '../../contexts/expansesContext';
+import { useContext } from 'react'
+import { expansesContext } from '../../contexts/expansesContext'
 
-import { SORT_TYPE } from '../../utils';
+import { SORT_TYPE } from '../../utils'
 
-export function ExpansesFilter() {
-  const { onSortHandler } = useContext(expansesContext);
+export function ExpansesFilter () {
+  const { onSortHandler } = useContext(expansesContext)
 
   return (
     <div className="col-8 mx-auto mb-2">
@@ -21,5 +21,5 @@ export function ExpansesFilter() {
         </button>
       </div>
     </div>
-  );
+  )
 }

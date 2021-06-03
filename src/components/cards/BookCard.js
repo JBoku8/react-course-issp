@@ -1,4 +1,4 @@
-import css from './bookCard.module.css';
+import css from './bookCard.module.css'
 
 export const BookCard = ({ item }) => {
   return (
@@ -11,5 +11,5 @@ export const BookCard = ({ item }) => {
       <h2 className={`card-title ${css.title}`}>{item.title}</h2>
       <div className="card-body">{item.description}</div>
     </div>
-  );
-};
+  )
+}

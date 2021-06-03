@@ -1,5 +1,5 @@
-function Theme({ children }) {
-  return <div className="bg-light">{children}</div>;
+function Theme ({ children }) {
+  return <div className="bg-light">{children}</div>
 }
 
-export default Theme;
+export default Theme

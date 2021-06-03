@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { expansesContext } from '../../contexts/expansesContext';
+import { useContext } from 'react'
+import { expansesContext } from '../../contexts/expansesContext'
 
-import './list-item.css';
+import './list-item.css'
 
 export const ExpansesListItem = ({ item }) => {
-  const { setSelectedExpanse: onClick } = useContext(expansesContext);
+  const { setSelectedExpanse: onClick } = useContext(expansesContext)
 
   return (
     <li
@@ -16,5 +16,5 @@ export const ExpansesListItem = ({ item }) => {
       </div>
       <span className="badge bg-success p-2">${item.amount}</span>
     </li>
-  );
-};
+  )
+}

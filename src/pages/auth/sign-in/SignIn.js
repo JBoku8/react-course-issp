@@ -1,28 +1,29 @@
-import { useHistory } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
-import { EXPANSES_PATH } from '../../../paths';
-import { storeValue } from '../../../utils';
+import { useDispatch } from 'react-redux'
+import { EXPANSES_PATH } from '../../../paths'
+import { storeValue } from '../../../utils'
 
-import { login } from '../../../services';
-import { useContext } from 'react';
-import { authContext } from '../../../providers/AuthProvider';
-import { AUTH_TOKEN } from '../../../utils/constants';
+import { login } from '../../../services'
+import { AUTH_TOKEN } from '../../../utils/constants'
+import { setAuthUserAction } from '../../../redux/actions'
 
 export const SignIn = () => {
-  const history = useHistory();
-  const { signIn } = useContext(authContext);
-  const { handleSubmit, register, reset } = useForm();
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  const { handleSubmit, register, reset } = useForm()
 
   const onSubmit = async (data) => {
-    const loggedIn = await login(data);
+    const loggedIn = await login(data)
     if (loggedIn) {
-      storeValue(AUTH_TOKEN, loggedIn.token);
-      signIn(loggedIn);
-      history.replace(EXPANSES_PATH);
+      storeValue(AUTH_TOKEN, loggedIn.token)
+      dispatch(setAuthUserAction(loggedIn.token))
+      history.replace(EXPANSES_PATH)
     }
-    reset();
-  };
+    reset()
+  }
 
   return (
     <div className="row">
@@ -40,7 +41,7 @@ export const SignIn = () => {
               id="email"
               defaultValue="eve.holt@reqres.in"
               {...register('email', {
-                required: true,
+                required: true
               })}
             />
           </div>
@@ -54,7 +55,7 @@ export const SignIn = () => {
               id="password"
               defaultValue="cityslicka"
               {...register('password', {
-                required: true,
+                required: true
               })}
             />
           </div>
@@ -65,5 +66,5 @@ export const SignIn = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}

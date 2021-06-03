@@ -1,3 +1,3 @@
-export * from './books';
-export * from './auth';
-export * from './products';
+export * from './books'
+export * from './auth'
+export * from './products'
