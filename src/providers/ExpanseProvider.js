@@ -4,7 +4,7 @@ import { expansesContext } from '../contexts/expansesContext'
 import { expansesList } from '../data'
 import { SORT_TYPE } from '../utils'
 
-function ExpanseProvider ({ children }) {
+function ExpanseProvider({ children }) {
   const [expansesData, setExpansesData] = useState(expansesList)
   const [selectedExpanse, setSelectedExpanse] = useState(null)
 
@@ -15,12 +15,11 @@ function ExpanseProvider ({ children }) {
       const leftData = expansesData.slice(0, index)
       const updatedItem = {
         ...expansesData[index],
-        ...data
+        ...data,
       }
       const rightData = expansesData.slice(index + 1)
 
       setExpansesData([...leftData, updatedItem, ...rightData])
-
       setSelectedExpanse(null)
     } else {
       setExpansesData([...expansesData, data])
@@ -45,7 +44,7 @@ function ExpanseProvider ({ children }) {
         selectedExpanse,
         setSelectedExpanse,
         onSortHandler,
-        expansesData
+        expansesData,
       }}>
       {children}
     </expansesContext.Provider>

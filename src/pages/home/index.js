@@ -8,11 +8,11 @@ import useFetch from '../../hooks/useFetch'
 import {
   addNumberAction,
   resetNumberAction,
-  subtractNumberAction
+  subtractNumberAction,
 } from '../../redux/actions'
 import { counterSelector } from '../../redux/selectors'
 
-function Home () {
+function Home() {
   const [showGreeting, setShowGreeting] = useState(false)
   const dispatch = useDispatch()
   const counter = useSelector(counterSelector)
@@ -23,6 +23,9 @@ function Home () {
 
   const onGreetingClick = () => {
     setShowGreeting(!showGreeting)
+    dispatch({
+      type: 'INVALID_ACTION',
+    })
   }
 
   const renderGreeting = () => {

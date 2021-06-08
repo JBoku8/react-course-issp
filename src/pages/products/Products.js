@@ -10,7 +10,7 @@ const CLEAR_FILTER = 'CLEAR_FILTER'
 const initialState = {
   products: [],
   oldProducts: [],
-  filters: null
+  filters: null,
 }
 
 const productsReducer = (state, action) => {
@@ -19,29 +19,30 @@ const productsReducer = (state, action) => {
       return {
         ...state,
         products: action.payload,
-        oldProducts: [...action.payload]
+        oldProducts: [...action.payload],
       }
     case SET_FILTER:
+      // eslint-disable-next-line
       const data = state.products.filter((item) =>
         item.name.toLowerCase().includes(action.payload.toLowerCase())
       )
       return {
         ...state,
         filter: action.payload,
-        products: data
+        products: data,
       }
     case CLEAR_FILTER:
       return {
         ...state,
         filter: null,
-        products: [...state.oldProducts]
+        products: [...state.oldProducts],
       }
     default:
       throw new Error('')
   }
 }
 
-function Products () {
+function Products() {
   const [state, dispatch] = useReducer(productsReducer, initialState)
   const [, setProductsStorage] = useLocalStorage('app:products', [])
 
@@ -50,7 +51,7 @@ function Products () {
     setProductsStorage(productsList)
     dispatch({
       type: SET_PRODUCTS,
-      payload: productsList
+      payload: productsList,
     })
   }, [setProductsStorage])
 
@@ -66,12 +67,12 @@ function Products () {
     if (target.value.length > 3) {
       dispatch({
         type: SET_FILTER,
-        payload: target.value
+        payload: target.value,
       })
     } else {
       if (state.filter) {
         dispatch({
-          type: CLEAR_FILTER
+          type: CLEAR_FILTER,
         })
       }
     }
