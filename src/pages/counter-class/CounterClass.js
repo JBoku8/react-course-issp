@@ -2,31 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class CounterClass extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      count: null,
-      bgColor: 'bg-light'
-    }
-
-    // this.onIncrement = this.onIncrement.bind(this);
-    // this.onDecrement = this.onDecrement.bind(this);
-    // this.onReset = this.onReset.bind(this);
+  state = {
+    count: null,
+    bgColor: 'bg-light',
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { initialValue } = this.props
     //   ajax call
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: initialValue
+        count: initialValue,
       }
     })
   }
 
-  componentDidUpdate (prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     const { count } = this.state
     if (count !== prevState.count) {
       let bgColor = 'bg-light'
@@ -40,41 +32,41 @@ class CounterClass extends React.Component {
       this.setState((prevState) => {
         return {
           ...prevState,
-          bgColor
+          bgColor,
         }
       })
     }
   }
 
-  onIncrement (value) {
+  onIncrement(value) {
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: prevState.count + value
+        count: prevState.count + value,
       }
     })
   }
 
-  onDecrement (value) {
+  onDecrement(value) {
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: prevState.count - value
+        count: prevState.count - value,
       }
     })
   }
 
-  onReset () {
+  onReset() {
     const { initialValue } = this.props
     this.setState((prevState) => {
       return {
         ...prevState,
-        count: initialValue
+        count: initialValue,
       }
     })
   }
 
-  render () {
+  render() {
     const { count, bgColor } = this.state
 
     return (
@@ -84,32 +76,27 @@ class CounterClass extends React.Component {
         <div className="col-4 d-flex justify-content-between">
           <button
             className="btn btn-dark btn-lg"
-            onClick={this.onIncrement.bind(this, 1)}
-          >
+            onClick={this.onIncrement.bind(this, 1)}>
             +1
           </button>
           <button
             className="btn btn-dark btn-lg"
-            onClick={this.onIncrement.bind(this, 10)}
-          >
+            onClick={this.onIncrement.bind(this, 10)}>
             +10
           </button>
           <button
             className="btn btn-danger btn-lg"
-            onClick={this.onReset.bind(this)}
-          >
+            onClick={this.onReset.bind(this)}>
             0
           </button>
           <button
             className="btn btn-primary btn-lg"
-            onClick={this.onDecrement.bind(this, 1)}
-          >
+            onClick={this.onDecrement.bind(this, 1)}>
             -1
           </button>
           <button
             className="btn btn-primary btn-lg"
-            onClick={this.onDecrement.bind(this, 10)}
-          >
+            onClick={this.onDecrement.bind(this, 10)}>
             -10
           </button>
         </div>
@@ -119,7 +106,7 @@ class CounterClass extends React.Component {
 }
 
 CounterClass.propTypes = {
-  initialValue: PropTypes.number.isRequired
+  initialValue: PropTypes.number.isRequired,
 }
 
 export default CounterClass

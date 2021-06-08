@@ -1,10 +1,18 @@
-import { SET_AUTH_USER, SET_GUEST_USER } from '../action-types/auth-types'
+import {
+  AUTO_LOGIN,
+  SET_AUTH_USER,
+  SET_GUEST_USER,
+} from '../action-types/auth-types'
 
 export const setAuthUserAction = (payload) => ({
   type: SET_AUTH_USER,
-  payload
+  payload,
 })
 
 export const setGuestUserAction = () => ({
-  type: SET_GUEST_USER
+  type: SET_GUEST_USER,
+})
+
+export const autoLoginAction = () => ({
+  type: AUTO_LOGIN,
 })
