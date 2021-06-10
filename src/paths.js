@@ -5,6 +5,7 @@ export const COUNTER_CLASS_PATH = '/counter-class'
 export const EXPANSES_PATH = '/expanses'
 export const BOOKS_PATH = '/books'
 export const PRODUCTS_PATH = '/products'
+export const REDUX_PRODUCTS_PATH = '/redux-products'
 
 export const AUTH_PATH = '/auth'
 export const SIGN_IN_PATH = '/auth/sign-in'

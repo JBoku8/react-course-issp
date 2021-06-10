@@ -6,7 +6,7 @@ import { authSelector } from '../../redux/selectors'
 import { setGuestUserAction } from '../../redux/actions'
 import { logOut } from '../../services/auth'
 
-export function Navigation () {
+export function Navigation() {
   const history = useHistory()
   const authorized = useSelector(authSelector)
   const dispatch = useDispatch()
@@ -69,6 +69,9 @@ export function Navigation () {
 
       <NavLink className="nav-link" to={routes.PRODUCTS_PATH}>
         Products
+      </NavLink>
+      <NavLink className="nav-link" to={routes.REDUX_PRODUCTS_PATH}>
+        Redux Products
       </NavLink>
       {renderGuestLinks()}
       {renderUserLinks()}
