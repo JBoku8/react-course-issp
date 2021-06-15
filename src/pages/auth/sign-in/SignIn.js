@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-
 import { useDispatch } from 'react-redux'
+
 import { EXPANSES_PATH } from '../../../paths'
 import { storeValue } from '../../../utils'
 
@@ -41,7 +41,7 @@ export const SignIn = () => {
               id="email"
               defaultValue="eve.holt@reqres.in"
               {...register('email', {
-                required: true
+                required: true,
               })}
             />
           </div>
@@ -55,7 +55,7 @@ export const SignIn = () => {
               id="password"
               defaultValue="cityslicka"
               {...register('password', {
-                required: true
+                required: true,
               })}
             />
           </div>
