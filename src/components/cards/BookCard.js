@@ -1,3 +1,4 @@
+import { bookCardIds } from '../../utils/testids'
 import css from './bookCard.module.css'
 
 export const BookCard = ({ item }) => {
@@ -7,9 +8,14 @@ export const BookCard = ({ item }) => {
         className="card-img-top img-fluid h-50"
         src={item.image}
         alt={item.title}
+        data-testid={bookCardIds.image}
       />
-      <h2 className={`card-title ${css.title}`}>{item.title}</h2>
-      <div className="card-body">{item.description}</div>
+      <h2 className={`card-title ${css.title}`} data-testid={bookCardIds.title}>
+        {item.title}
+      </h2>
+      <div className="card-body" data-testid={bookCardIds.description}>
+        {item.description}
+      </div>
     </div>
   )
 }
