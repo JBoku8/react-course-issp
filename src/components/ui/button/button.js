@@ -1,12 +1,12 @@
-export const Button = (props) => {
+export const Button = ({ className, onClick, disabled, text }) => {
   return (
     <div className="row">
       <button
-        className={props.className}
-        onClick={props.onClick}
-        disabled={props.disabled}
-      >
-        {props.text}
+        className={className}
+        onClick={onClick}
+        disabled={disabled}
+        type="button">
+        {text}
       </button>
     </div>
   )

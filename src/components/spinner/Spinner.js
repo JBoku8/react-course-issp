@@ -1,7 +1,7 @@
-export const Spinner = () => {
+export const Spinner = ({ message = 'Loading...' }) => {
   return (
     <div className="d-flex align-items-center mt-5 mb-5">
-      <strong>Loading...</strong>
+      <strong>{message}</strong>
       <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
     </div>
   )
