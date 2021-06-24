@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Greeting from '../../components/greeting'
+import ParentComponent from '../../components/perf-optimization/ParentComponent'
 import Spinner from '../../components/spinner/Spinner'
 import { Button } from '../../components/ui'
 import useFetch from '../../hooks/useFetch'
@@ -61,6 +62,10 @@ function Home() {
 
   return (
     <div className="row">
+      <div className="col-12 my-3 shadow">
+        <ParentComponent />
+      </div>
+
       <div className="col-12 mb-2 btn-group">
         <button
           className="btn btn-primary"

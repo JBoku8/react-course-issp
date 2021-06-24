@@ -7,7 +7,6 @@ export const withAuth = (Component) => {
     if (!valueExists(AUTH_TOKEN)) {
       return <Redirect to="/" />
     }
-
     return <Component {...props} />
   }
 
