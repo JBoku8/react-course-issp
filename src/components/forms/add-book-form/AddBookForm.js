@@ -1,17 +1,17 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { useForm } from 'react-hook-form'
 import PropTypes from 'prop-types'
 import { v4 as uuid } from 'uuid'
 import { booksContext } from '../../../providers/BookProvider'
 
-function AddBookForm ({ showForm }) {
+function AddBookForm({ showForm }) {
   const { onBookAdd } = useContext(booksContext)
 
   const {
     handleSubmit,
     formState: { errors },
     register,
-    reset
+    reset,
   } = useForm()
 
   const onSubmit = (data) => {
@@ -19,7 +19,7 @@ function AddBookForm ({ showForm }) {
       ...data,
       isbn: uuid(),
       image:
-        'https://i.pinimg.com/originals/76/00/ba/7600ba9d3305b21fc543a0e4599dd04d.gif'
+        'https://i.pinimg.com/originals/76/00/ba/7600ba9d3305b21fc543a0e4599dd04d.gif',
     }
 
     onBookAdd(newBook)
@@ -37,7 +37,7 @@ function AddBookForm ({ showForm }) {
           className="form-control"
           id="title"
           {...register('title', {
-            required: true
+            required: true,
           })}
         />
         {errors.title && (
@@ -56,7 +56,7 @@ function AddBookForm ({ showForm }) {
           className="form-control"
           id="description"
           {...register('description', {
-            required: true
+            required: true,
           })}
         />
         {errors.description && (
@@ -81,7 +81,7 @@ function AddBookForm ({ showForm }) {
 }
 
 AddBookForm.propTypes = {
-  showForm: PropTypes.func.isRequired
+  showForm: PropTypes.func.isRequired,
 }
 
-export default AddBookForm
+export default memo(AddBookForm)
