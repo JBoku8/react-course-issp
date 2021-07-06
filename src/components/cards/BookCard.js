@@ -10,6 +10,10 @@ export const BookCard = ({ item }) => {
       <Link
         to={{
           pathname: `${BOOKS_PATH}/${item.isbn}`,
+          search: "name='example'",
+          state: {
+            fromBooksPage: true,
+          },
         }}>
         <img
           className="card-img-top img-fluid h-50"

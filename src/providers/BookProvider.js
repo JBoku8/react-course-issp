@@ -5,7 +5,7 @@ export const booksContext = createContext(null)
 
 booksContext.displayName = 'BooksContext'
 
-function BookProvider ({ children }) {
+function BookProvider({ children }) {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
   const [amount, setAmount] = useState()
@@ -25,9 +25,13 @@ function BookProvider ({ children }) {
     loadBooks(amount)
   }, [amount])
 
+  const findBookByISBN = (isbn) => {
+    return books.find((b) => b.isbn === isbn)
+  }
+
   return (
     <booksContext.Provider
-      value={{ books, setBooks, loading, onBookAdd, setAmount }}>
+      value={{ books, setBooks, loading, onBookAdd, setAmount, findBookByISBN }}>
       {children}
     </booksContext.Provider>
   )
