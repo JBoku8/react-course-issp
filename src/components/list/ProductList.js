@@ -1,6 +1,9 @@
-export const ProductList = ({ data }) => {
+import React from 'react'
+
+// eslint-disable-next-line react/display-name
+export const ProductList = React.forwardRef(({ data }, ref) => {
   return (
-    <div className="row px-3">
+    <div className="row px-3" ref={ref}>
       {data.map((item) => {
         return (
           <div className="card border-0 col-4 book-item mb-3 p-3" key={item.ean}>
@@ -28,6 +31,6 @@ export const ProductList = ({ data }) => {
       })}
     </div>
   )
-}
+})
 
 export default ProductList
