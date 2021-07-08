@@ -3,3 +3,7 @@ export const bookCardIds = {
   image: 'bookCard.image',
   description: 'bookCard.description',
 }
+
+export const greeting = {
+  text: 'greeting.text',
+}

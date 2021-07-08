@@ -1,7 +1,8 @@
-const Greeting = (props) => {
+import { greeting } from '../../utils/testids'
+const Greeting = ({ text }) => {
   return (
-    <div>
-      <h1>{props.text}</h1>
+    <div className="row">
+      <h1 data-testid={greeting.text}>{text}</h1>
     </div>
   )
 }
