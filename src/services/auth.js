@@ -8,16 +8,16 @@ export const login = async (credentials) => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     })
     return await response.json()
   } catch (error) {
     console.group('LOGIN')
     console.error('[login] error')
     console.trace(error)
-    console.groupEnd('LOGIN')
+    console.groupEnd()
   }
 }
 
@@ -27,9 +27,9 @@ export const register = async (credentials) => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     })
     return await response.json()
   } catch (error) {

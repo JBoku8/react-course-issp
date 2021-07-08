@@ -11,6 +11,7 @@ export const getProducts = async (quantity = 3) => {
     )
     return result.data.data
   } catch (error) {
-    console.log(error)
+    console.trace(error)
+    return []
   }
 }

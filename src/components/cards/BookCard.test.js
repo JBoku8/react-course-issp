@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
 import { bookCardIds } from '../../utils/testids'
 import { BookCard } from './BookCard'
 
@@ -9,7 +10,11 @@ describe('BookCard component testing', () => {
       image: 'mock-url',
       description: 'mock-description',
     }
-    const component = render(<BookCard item={mockBookItem} />)
+    const component = render(
+      <BrowserRouter>
+        <BookCard item={mockBookItem} />
+      </BrowserRouter>
+    )
     const titleElement = component.getByTestId(bookCardIds.title)
     const descriptionElement = component.getByTestId(bookCardIds.description)
     const imageElement = component.getByTestId(bookCardIds.image)
