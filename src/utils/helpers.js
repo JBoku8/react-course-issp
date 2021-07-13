@@ -1,4 +1,4 @@
-export function debounce (func, timeout = 300) {
+export function debounce(func, timeout = 300) {
   let timer
   return (...args) => {
     clearTimeout(timer)
@@ -7,3 +7,5 @@ export function debounce (func, timeout = 300) {
     }, timeout)
   }
 }
+
+export const getSpacing = (n) => `${n}rem`
