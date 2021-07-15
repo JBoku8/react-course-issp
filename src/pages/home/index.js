@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useQuery } from '@apollo/client'
 import Greeting from '../../components/greeting'
 import ParentComponent from '../../components/perf-optimization/ParentComponent'
 import Spinner from '../../components/spinner/Spinner'
@@ -12,11 +13,22 @@ import {
   subtractNumberAction,
 } from '../../redux/actions'
 import { counterSelector } from '../../redux/selectors'
+import { QUERY_CHARACTERS } from '../../queries/characters'
 
 function Home() {
   const [showGreeting, setShowGreeting] = useState(false)
   const dispatch = useDispatch()
   const counter = useSelector(counterSelector)
+  const {
+    data: charactersData,
+    loading: charactersLoading,
+    error: charactersError,
+  } = useQuery(QUERY_CHARACTERS, {
+    variables: {
+      page: 1,
+      name: 'Rick',
+    },
+  })
 
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URL}/companies?_quantity=1`
@@ -60,6 +72,28 @@ function Home() {
     )
   }
 
+  const renderGraphqlData = () => {
+    if (charactersError) {
+      return (
+        <div className="alert alert-danger">
+          <pre>{JSON.stringify(charactersError)}</pre>
+        </div>
+      )
+    }
+
+    if (charactersLoading || !charactersData) {
+      return <Spinner />
+    }
+
+    const { results, info } = charactersData.characters
+    return (
+      <div className="col-12">
+        <h2 className="text-muted">Characters - {results.length}</h2>
+        <pre>{JSON.stringify(info, null, 2)}</pre>
+      </div>
+    )
+  }
+
   return (
     <div className="row">
       <div className="col-12 my-3 shadow">
@@ -98,6 +132,7 @@ function Home() {
         <div className="col-8 border bg-light">{renderGreeting()}</div>
       </div>
       {renderCompanies()}
+      {renderGraphqlData()}
     </div>
   )
 }
